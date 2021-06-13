@@ -29,13 +29,20 @@ Test Recruitment Efishery
 - untuk menset statik token, masuk ke dalam menu settings pada pojok kiri atas, lalu pilih menu efishery, secara default kolom akan terisi dengan value "the_token" kita perlu action save untuk menyimpan static token untuk pertama kalinya
 ![image](https://user-images.githubusercontent.com/40462921/121787662-8c84c380-cbf1-11eb-8df7-26c4b134062d.png)
 
-- setelah itu run service golang, dan coba di postman..
-![image](https://user-images.githubusercontent.com/40462921/121787673-a7efce80-cbf1-11eb-9c18-78102805b041.png)
+- create docker image golang service dengan command "docker build -t efishery-odoo-sale ."
+![image](https://user-images.githubusercontent.com/40462921/121804472-c9dc6600-cc70-11eb-8dd5-6258089a5cc0.png)
+![image](https://user-images.githubusercontent.com/40462921/121804484-d791eb80-cc70-11eb-9492-425cd48a4259.png)
 
-- buka http://localhost:8080/test untuk mengecek apakah service golang berjalan
-![image](https://user-images.githubusercontent.com/40462921/121787683-bb9b3500-cbf1-11eb-9c2e-3f2af5f92abe.png)
+- pada command prompt/terminal ketik command line berikut docker run -d -p 8081:8080 efishery-odoo-sale
+![image](https://user-images.githubusercontent.com/40462921/121804504-f2fcf680-cc70-11eb-8e97-87f8ea773157.png)
 
-- service/api golang dan odoo sudah dapat dipakai
+- kita juga bisa memperbanyak service interceptor dengan port yang berbeda 
+![image](https://user-images.githubusercontent.com/40462921/121804686-df9e5b00-cc71-11eb-87d5-5656c681cd69.png)
+
+- cek apakah service golang dapat berjalan atau tidak, buka http://localhost:8081/test
+![image](https://user-images.githubusercontent.com/40462921/121804535-0c9e3e00-cc71-11eb-952f-7d292dd44f0f.png)
+
+- kita bisa memakai REST API pada golang yang sudah dibuat untuk integrasi dengan odoo
 ![image](https://user-images.githubusercontent.com/40462921/121787699-cfdf3200-cbf1-11eb-9312-ad3b3e38fea5.png)
 ![image](https://user-images.githubusercontent.com/40462921/121787750-3cf2c780-cbf2-11eb-963f-13f539e08936.png)
 
