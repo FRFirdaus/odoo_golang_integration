@@ -1,6 +1,10 @@
 # efishery_test
 Test Recruitment Efishery
 
+- create docker image golang service dengan command "docker build -t efishery-odoo-sale ."
+![image](https://user-images.githubusercontent.com/40462921/121804472-c9dc6600-cc70-11eb-8dd5-6258089a5cc0.png)
+![image](https://user-images.githubusercontent.com/40462921/121804484-d791eb80-cc70-11eb-9492-425cd48a4259.png)
+
 - execute docker-compose "docker-compose up" untuk container odoo dan db
 ![image](https://user-images.githubusercontent.com/40462921/121787713-f8672c00-cbf1-11eb-8a60-758f3fc80365.png)
 
@@ -28,16 +32,6 @@ Test Recruitment Efishery
 
 - untuk menset statik token, masuk ke dalam menu settings pada pojok kiri atas, lalu pilih menu efishery, secara default kolom akan terisi dengan value "the_token" kita perlu action save untuk menyimpan static token untuk pertama kalinya
 ![image](https://user-images.githubusercontent.com/40462921/121787662-8c84c380-cbf1-11eb-8df7-26c4b134062d.png)
-
-- create docker image golang service dengan command "docker build -t efishery-odoo-sale ."
-![image](https://user-images.githubusercontent.com/40462921/121804472-c9dc6600-cc70-11eb-8dd5-6258089a5cc0.png)
-![image](https://user-images.githubusercontent.com/40462921/121804484-d791eb80-cc70-11eb-9492-425cd48a4259.png)
-
-- pada command prompt/terminal ketik command line berikut docker run -d -p 8081:8080 efishery-odoo-sale
-![image](https://user-images.githubusercontent.com/40462921/121804504-f2fcf680-cc70-11eb-8e97-87f8ea773157.png)
-
-- kita juga bisa memperbanyak service interceptor dengan port yang berbeda 
-![image](https://user-images.githubusercontent.com/40462921/121804686-df9e5b00-cc71-11eb-87d5-5656c681cd69.png)
 
 - cek apakah service golang dapat berjalan atau tidak, buka http://localhost:8081/test
 ![image](https://user-images.githubusercontent.com/40462921/121804535-0c9e3e00-cc71-11eb-952f-7d292dd44f0f.png)
