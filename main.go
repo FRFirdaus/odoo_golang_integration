@@ -11,7 +11,9 @@ import (
 	"github.com/gorilla/mux"
 )
 
-var OdoobaseURL = "http://localhost:8091/api/order"
+// since we use containers for odoo and golang communicate each other we need to define the url head with host.docker.internal:port
+// we cant use localhost since golang service will read it in local container
+var OdoobaseURL = "http://host.docker.internal:8091/api/order"
 
 func getOrderDetails(w http.ResponseWriter, r *http.Request) {
 	// GET One Order details
