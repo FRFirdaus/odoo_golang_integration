@@ -90,20 +90,7 @@ class SaleOrderRequest(http.Controller, PureControllerMixin):
                     success_status = True
                     response_status = "200 OK"
                     response_message = "sales order updated"
-                    data_response = {
-                        'so_id': sale_order.id,
-                        'partner_id': sale_order.partner_id.id,
-                        'date_order': str(sale_order.date_order),
-                        'external_reference': sale_order.external_reference,
-                        'so_number': sale_order.name,
-                        'order_line': [{
-                            'order_line_id': o_line.id,
-                            'product_id': o_line.product_id.id,
-                            'product_uom': o_line.product_uom.id,
-                            'product_uom_qty': o_line.product_uom_qty,
-                            'price_unit': o_line.price_unit
-                        } for o_line in sale_order.order_line]
-                    }
+                    data_response = self.data_response_sale_order(sale_order)
         else:
             response_status = "401 Unauthorized"
             response_message = "Token Not Found"
@@ -116,6 +103,24 @@ class SaleOrderRequest(http.Controller, PureControllerMixin):
 
         # return response 
         return Response(json.dumps(result), headers=headers_json, status=response_status)
+
+    def data_response_sale_order(self, sale_order):
+        result = {
+            'so_id': sale_order.id,
+            'partner_id': sale_order.partner_id.id,
+            'date_order': str(sale_order.date_order),
+            'external_reference': sale_order.external_reference,
+            'so_number': sale_order.name,
+            'order_line': [{
+                'order_line_id': o_line.id,
+                'product_id': o_line.product_id.id,
+                'product_uom': o_line.product_uom.id,
+                'product_uom_qty': o_line.product_uom_qty,
+                'price_unit': o_line.price_unit
+            } for o_line in sale_order.order_line]
+        }
+
+        return result
 
     @http.route('/api/order', auth='public', csrf=False, methods=['POST'])
     def create_order(self):
@@ -155,20 +160,7 @@ class SaleOrderRequest(http.Controller, PureControllerMixin):
                     success_status = True
                     response_status = "200 OK"
                     response_message = "sales order created"
-                    data_response = {
-                        'so_id': sale_order.id,
-                        'partner_id': sale_order.partner_id.id,
-                        'date_order': str(sale_order.date_order),
-                        'external_reference': sale_order.external_reference,
-                        'so_number': sale_order.name,
-                        'order_line': [{
-                            'order_line_id': o_line.id,
-                            'product_id': o_line.product_id.id,
-                            'product_uom': o_line.product_uom.id,
-                            'product_uom_qty': o_line.product_uom_qty,
-                            'price_unit': o_line.price_unit
-                        } for o_line in sale_order.order_line]
-                    }
+                    data_response = self.data_response_sale_order(sale_order)
             else:
                 response_status = "400 Bad Request"
                 response_message = "Payload Request is empty"
