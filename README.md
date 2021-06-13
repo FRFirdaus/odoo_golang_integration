@@ -36,6 +36,9 @@ Test Recruitment Efishery
 - pada command prompt/terminal ketik command line berikut docker run -d -p 8081:8080 efishery-odoo-sale
 ![image](https://user-images.githubusercontent.com/40462921/121804504-f2fcf680-cc70-11eb-8e97-87f8ea773157.png)
 
+- kita juga bisa memperbanyak service interceptor dengan port yang berbeda 
+![image](https://user-images.githubusercontent.com/40462921/121804686-df9e5b00-cc71-11eb-87d5-5656c681cd69.png)
+
 - cek apakah service golang dapat berjalan atau tidak, buka http://localhost:8081/test
 ![image](https://user-images.githubusercontent.com/40462921/121804535-0c9e3e00-cc71-11eb-952f-7d292dd44f0f.png)
 
