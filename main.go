@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -55,7 +56,9 @@ func responseGeneric(w http.ResponseWriter, r *http.Request, request *http.Reque
 		log.Fatal(err)
 	}
 
-	rnd.JSON(w, http.StatusOK, responseData)
+	var resultResp map[string]interface{}
+	json.Unmarshal([]byte(responseData), &resultResp)
+	rnd.JSON(w, http.StatusInternalServerError, resultResp)
 	return
 }
 
