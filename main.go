@@ -2,13 +2,13 @@ package main
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
+	"github.com/thedevsaddam/renderer"
 )
 
 // since we use containers for odoo and golang communicate each other we need to define the url head with host.docker.internal:port
@@ -31,10 +31,11 @@ func getOrderDetails(w http.ResponseWriter, r *http.Request) {
 func responseGeneric(w http.ResponseWriter, r *http.Request, request *http.Request) {
 	client := &http.Client{}
 	Auth := r.Header.Get("Authorization")
+	rnd := renderer.New()
 	request.Header.Set("Authorization", Auth)
-	w.Header().Set("Content-Type", "application/json")
 
 	response, err := client.Do(request)
+
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -45,8 +46,7 @@ func responseGeneric(w http.ResponseWriter, r *http.Request, request *http.Reque
 			"success": false,
 			"message": "Internal Server Error",
 		}
-		responseErrJson, _ := json.Marshal(responseStruct)
-		w.Write(responseErrJson)
+		rnd.JSON(w, http.StatusInternalServerError, responseStruct)
 		return
 	}
 
@@ -55,7 +55,8 @@ func responseGeneric(w http.ResponseWriter, r *http.Request, request *http.Reque
 		log.Fatal(err)
 	}
 
-	w.Write(responseData)
+	rnd.JSON(w, http.StatusOK, responseData)
+	return
 }
 
 func baseGenericFuncRequest(w http.ResponseWriter, r *http.Request, method string) {
