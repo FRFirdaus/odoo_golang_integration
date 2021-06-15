@@ -5,6 +5,7 @@ RUN apk add git
 
 # download gorilla/mux for http request that we use in main.go 
 RUN go get github.com/gorilla/mux
+RUN go get github.com/thedevsaddam/renderer
 
 # standard run 
 RUN mkdir /app
