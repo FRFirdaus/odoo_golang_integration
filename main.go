@@ -46,7 +46,8 @@ func responseGeneric(w http.ResponseWriter, r *http.Request, request *http.Reque
 			"message": "Internal Server Error",
 		}
 		responseErrJson, _ := json.Marshal(responseStruct)
-		fmt.Fprintf(w, string(responseErrJson))
+		w.Write(responseErrJson)
+		return
 	}
 
 	responseData, err := ioutil.ReadAll(response.Body)
@@ -54,7 +55,7 @@ func responseGeneric(w http.ResponseWriter, r *http.Request, request *http.Reque
 		log.Fatal(err)
 	}
 
-	fmt.Fprintf(w, string(responseData))
+	w.Write(responseData)
 }
 
 func baseGenericFuncRequest(w http.ResponseWriter, r *http.Request, method string) {
