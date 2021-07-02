@@ -59,7 +59,6 @@ func responseGeneric(w http.ResponseWriter, r *http.Request, request *http.Reque
 	var resultResp map[string]interface{}
 	json.Unmarshal([]byte(responseData), &resultResp)
 	rnd.JSON(w, http.StatusInternalServerError, resultResp)
-	return
 }
 
 func baseGenericFuncRequest(w http.ResponseWriter, r *http.Request, method string) {
