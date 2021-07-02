@@ -1,5 +1,5 @@
-# efishery_test
-Test Recruitment Efishery
+# efishery_test_iseng
+Odoo Golang Integration
 
 - create docker image golang service dengan command "docker build -t efishery-odoo-sale ."
 ![image](https://user-images.githubusercontent.com/40462921/121804472-c9dc6600-cc70-11eb-8dd5-6258089a5cc0.png)
